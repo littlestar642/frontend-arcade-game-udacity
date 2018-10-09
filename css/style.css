@@ -1,0 +1,31 @@
+body {
+    text-align: center;
+}
+
+.wrapper {
+    display: flex;
+}
+
+#canvasCol {
+    flex: 3;
+    max-width: 500px;
+}
+
+.col {
+    text-align: center;
+    flex: 1
+}
+
+#winCount,
+#movCount {
+    text-align: center;
+    font-size: 200px;
+    margin-top: 25vh;
+    color: rgb(74, 110, 20)
+}
+
+.title {
+    font-size: 40px;
+    text-decoration: underline;
+    color: brown
+}
