@@ -1,4 +1,5 @@
 // The Enemy Class for instatiating the enemies with their initial locations and speeds.
+'use strict';
 class Enemy {
     constructor(n) {
         this.sprite = 'images/enemy-bug.png';
@@ -22,6 +23,8 @@ class Enemy {
     }
 }
 // Player Class to instatiate the Players in the game and set their initial Values. 
+let winCountDom=document.querySelector('#winCount');
+let movCountDom=document.querySelector('#movCount');
 class Player {
     constructor() {
         this.sprite = 'images/char-boy.png';
@@ -29,30 +32,30 @@ class Player {
         this.y = 83 * 5;
         this.width = 80;
         this.height = 80;
-        this.winCount = document.querySelector('#winCount').nodeValue || 0;
-        this.movCount = document.querySelector('#movCount').nodeValue || 0;
+        this.winCount = winCountDom.nodeValue || 0;
+        this.movCount = movCountDom.nodeValue || 0;
     }
     // Method to take the User Input and accordingly move the Player.
     handleInput(code) {
         if (code === 'left') {
             this.x -= 100;
             ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-            document.querySelector('#movCount').textContent = ++this.movCount;
+            movCountDom.textContent = ++this.movCount;
         }
         if (code === 'right') {
             ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
             this.x += 100;
-            document.querySelector('#movCount').textContent = ++this.movCount;
+            movCountDom.textContent = ++this.movCount;
         }
         if (code === 'up') {
             this.y -= 90;
             ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-            document.querySelector('#movCount').textContent = ++this.movCount;
+            movCountDom.textContent = ++this.movCount;
         }
         if (code === 'down') {
             this.y += 90;
             ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-            document.querySelector('#movCount').textContent = ++this.movCount;
+            movCountDom.textContent = ++this.movCount;
         }
     }
     // Method to render the Player Postions
@@ -77,7 +80,7 @@ class Player {
                 title: 'You Win!!',
                 text: 'You have good timings',
             })
-            document.querySelector('#winCount').textContent = ++this.winCount;
+            winCountDom.textContent = ++this.winCount;
         }
     }
 }
